@@ -9,9 +9,9 @@ const hanken = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Química con Priscilla",
+  title: "Tutorías de Química en Costa Rica | Química con Priscilla",
   description:
-    "Tutorías de química personalizadas para estudiantes de colegio o primer año de la U.",
+    "Tutorías de química personalizadas para estudiantes de colegio y universidad en Costa Rica. Preparación para exámenes, bachillerato internacional y nivelación. Agenda tu clase hoy.",
 };
 
 export default function RootLayout({

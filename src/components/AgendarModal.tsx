@@ -92,7 +92,7 @@ export default function AgendarModal({ isOpen, onClose }: Props) {
             onClick={onClose}
             className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[var(--color-surface-container)] transition-colors text-[var(--color-on-surface-variant)]"
           >
-            <span className="material-symbols-outlined text-xl">close</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
 
@@ -100,7 +100,7 @@ export default function AgendarModal({ isOpen, onClose }: Props) {
         {status === "success" ? (
           <div className="p-8 text-center flex flex-col items-center gap-4">
             <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
-              <span className="material-symbols-outlined text-5xl text-green-600">check_circle</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-5xl text-green-600">check_circle</span>
             </div>
             <h3 className="text-2xl font-bold text-[var(--color-on-surface)]">¡Mensaje enviado!</h3>
             <p className="text-[var(--color-on-surface-variant)] leading-relaxed">
@@ -239,12 +239,12 @@ export default function AgendarModal({ isOpen, onClose }: Props) {
             >
               {status === "submitting" ? (
                 <>
-                  <span className="material-symbols-outlined text-xl animate-spin">progress_activity</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-xl animate-spin">progress_activity</span>
                   Enviando...
                 </>
               ) : (
                 <>
-                  <span className="material-symbols-outlined text-xl">send</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-xl">send</span>
                   Enviar solicitud
                 </>
               )}

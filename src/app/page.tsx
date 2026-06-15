@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import AgendarModal from "@/components/AgendarModal";
 
 const WHATSAPP_NUMBER = "50660776079";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Priscilla%2C%20me%20gustar%C3%ADa%20agendar%20una%20tutor%C3%ADa%20de%20qu%C3%ADmica`;
 
 const testimonials = [
   { image: "/images/testimonio-1.webp" },
@@ -22,10 +22,23 @@ function WhatsAppIcon() {
   );
 }
 
-function TestimonialCard({ image }: { image: string }) {
+const testimonialAlts = [
+  "Reseña de estudiante de primer ingreso a la universidad",
+  "Reseña de estudiante de colegio científico",
+  "Reseña de estudiante en curso de nivelación de química",
+  "Reseña de estudiante universitaria de química",
+  "Reseña de estudiante preparando exámenes de química",
+];
+
+function TestimonialCard({ image, index }: { image: string; index: number }) {
   return (
     <div className="bg-white border border-[var(--color-outline-variant)]/30 shadow-sm rounded-2xl w-[300px] sm:w-[350px] flex-shrink-0 overflow-hidden">
-      <img src={image} alt="Reseña de estudiante" className="w-full h-auto object-contain" />
+      <img
+        src={image}
+        alt={testimonialAlts[index] ?? "Reseña de estudiante de tutorías de química"}
+        loading="lazy"
+        className="w-full h-auto object-contain"
+      />
     </div>
   );
 }
@@ -65,14 +78,14 @@ export default function Home() {
             className="hidden md:flex items-center gap-2 text-white text-sm font-semibold tracking-widest uppercase px-6 py-3 rounded-full hover:opacity-90 transition-all hover:-translate-y-0.5 shadow-lg bg-[#5956e0]"
           >
             <span>Agendar Clase</span>
-            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-[18px]">arrow_forward</span>
           </button>
           <button
             onClick={() => setMobileMenuOpen((v) => !v)}
             className="md:hidden text-[#5956e0] p-2"
             aria-label="Menú"
           >
-            <span className="material-symbols-outlined">{mobileMenuOpen ? "close" : "menu"}</span>
+            <span aria-hidden="true" className="material-symbols-outlined">{mobileMenuOpen ? "close" : "menu"}</span>
           </button>
         </div>
 
@@ -88,7 +101,7 @@ export default function Home() {
               className="flex items-center justify-center gap-2 text-white text-sm font-semibold tracking-widest uppercase px-6 py-3 rounded-full bg-[#5956e0] hover:opacity-90 transition-opacity mt-2"
             >
               <span>Agendar Clase</span>
-              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[18px]">arrow_forward</span>
             </button>
           </div>
         )}
@@ -143,7 +156,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[var(--color-primary-container)]/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10" />
                 <img
                   src="/images/priscilla.webp"
-                  alt="Priscilla"
+                  alt="Priscilla, profesora y tutora de química graduada de la UCR"
                   className="rounded-3xl w-full h-auto object-cover shadow-lg border border-[var(--color-outline-variant)]/30"
                 />
               </div>
@@ -171,7 +184,7 @@ export default function Home() {
                   "Y seguimiento personalizado del estudiante a través de su curso de química",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-[var(--color-primary)] mt-1">check_circle</span>
+                    <span aria-hidden="true" className="material-symbols-outlined text-[var(--color-primary)] mt-1">check_circle</span>
                     {item}
                   </li>
                 ))}
@@ -197,7 +210,7 @@ export default function Home() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-secondary-container)]/20 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500" />
                 <div className="absolute top-6 right-6 bg-[var(--color-inverse-surface)] text-[var(--color-inverse-on-surface)] text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full">Popular</div>
                 <div className="w-14 h-14 rounded-2xl bg-[var(--color-secondary-fixed)] flex items-center justify-center text-[var(--color-on-secondary-fixed)] mb-6">
-                  <span className="material-symbols-outlined text-3xl">person</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-3xl">person</span>
                 </div>
                 <h3 className="text-[24px] font-semibold text-[var(--color-on-surface)] mb-3">Clases Individuales</h3>
                 <p className="text-[var(--color-on-surface-variant)] flex-grow mb-8 leading-relaxed">
@@ -217,7 +230,7 @@ export default function Home() {
               <div className="glass-panel rounded-3xl p-8 lg:p-10 flex flex-col relative overflow-hidden group hover:bg-white/60 transition-colors duration-500">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-[var(--color-primary-container)]/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500" />
                 <div className="w-14 h-14 rounded-2xl bg-[var(--color-primary-fixed)] flex items-center justify-center text-[var(--color-on-primary-fixed)] mb-6">
-                  <span className="material-symbols-outlined text-3xl">school</span>
+                  <span aria-hidden="true" className="material-symbols-outlined text-3xl">school</span>
                 </div>
                 <h3 className="text-[24px] font-semibold text-[var(--color-on-surface)] mb-3">Nivelación para Química</h3>
                 <p className="text-[var(--color-on-surface-variant)] flex-grow mb-8 leading-relaxed">
@@ -253,7 +266,7 @@ export default function Home() {
                 className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[var(--color-outline-variant)]/40 items-center justify-center text-[#5956e0] hover:bg-[#5956e0] hover:text-white transition-colors"
                 aria-label="Anterior"
               >
-                <span className="material-symbols-outlined text-xl">chevron_left</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-xl">chevron_left</span>
               </button>
 
               {/* Carrusel */}
@@ -264,7 +277,7 @@ export default function Home() {
               >
                 {testimonials.map((t, i) => (
                   <div key={i} className="snap-center flex-shrink-0">
-                    <TestimonialCard image={t.image} />
+                    <TestimonialCard image={t.image} index={i} />
                   </div>
                 ))}
               </div>
@@ -274,13 +287,13 @@ export default function Home() {
                 className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[var(--color-outline-variant)]/40 items-center justify-center text-[#5956e0] hover:bg-[#5956e0] hover:text-white transition-colors"
                 aria-label="Siguiente"
               >
-                <span className="material-symbols-outlined text-xl">chevron_right</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-xl">chevron_right</span>
               </button>
             </div>
 
             {/* Hint de swipe — solo mobile */}
             <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-[var(--color-outline)] text-sm animate-swipe-hint">
-              <span className="material-symbols-outlined text-base">swipe</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-base">swipe</span>
               Desliza para ver más
             </div>
           </div>
@@ -292,7 +305,7 @@ export default function Home() {
             <div className="glass-panel rounded-[2rem] p-10 md:p-16 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-primary-container)]/10 -z-10" />
               <div className="w-20 h-20 bg-white/80 rounded-2xl mx-auto flex items-center justify-center mb-8 shadow-sm backdrop-blur-md">
-                <span className="material-symbols-outlined text-4xl text-[var(--color-primary)]">chat_bubble</span>
+                <span aria-hidden="true" className="material-symbols-outlined text-4xl text-[var(--color-primary)]">chat_bubble</span>
               </div>
               <h2 className="text-[32px] md:text-[48px] font-semibold text-[var(--color-on-surface)] mb-6 leading-tight">
                 ¿Listo para empezar?
