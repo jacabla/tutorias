@@ -247,10 +247,10 @@ export default function Home() {
               <p className="text-lg text-[var(--color-on-surface-variant)]">Experiencias de estudiantes que han mejorado sus notas.</p>
             </div>
             <div className="relative">
-              {/* Flecha izquierda */}
+              {/* Flechas — solo desktop */}
               <button
                 onClick={() => scrollCarousel("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[var(--color-outline-variant)]/40 flex items-center justify-center text-[#5956e0] hover:bg-[#5956e0] hover:text-white transition-colors"
+                className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[var(--color-outline-variant)]/40 items-center justify-center text-[#5956e0] hover:bg-[#5956e0] hover:text-white transition-colors"
                 aria-label="Anterior"
               >
                 <span className="material-symbols-outlined text-xl">chevron_left</span>
@@ -259,22 +259,29 @@ export default function Home() {
               {/* Carrusel */}
               <div
                 ref={carouselRef}
-                className="flex gap-6 overflow-x-auto scroll-smooth px-10 py-4 scrollbar-hide"
+                className="flex gap-6 overflow-x-auto scroll-smooth py-4 scrollbar-hide snap-x snap-mandatory md:px-10 px-4"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
                 {testimonials.map((t, i) => (
-                  <TestimonialCard key={i} image={t.image} />
+                  <div key={i} className="snap-center flex-shrink-0">
+                    <TestimonialCard image={t.image} />
+                  </div>
                 ))}
               </div>
 
-              {/* Flecha derecha */}
               <button
                 onClick={() => scrollCarousel("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[var(--color-outline-variant)]/40 flex items-center justify-center text-[#5956e0] hover:bg-[#5956e0] hover:text-white transition-colors"
+                className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[var(--color-outline-variant)]/40 items-center justify-center text-[#5956e0] hover:bg-[#5956e0] hover:text-white transition-colors"
                 aria-label="Siguiente"
               >
                 <span className="material-symbols-outlined text-xl">chevron_right</span>
               </button>
+            </div>
+
+            {/* Hint de swipe — solo mobile */}
+            <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-[var(--color-outline)] text-sm animate-swipe-hint">
+              <span className="material-symbols-outlined text-base">swipe</span>
+              Desliza para ver más
             </div>
           </div>
         </section>
